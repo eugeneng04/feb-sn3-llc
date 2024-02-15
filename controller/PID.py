@@ -1,11 +1,12 @@
 import rospy
 
 class PID(object):
-    def __init__(self, Kp, Ki, Kd):
+    def __init__(self, Kp, Ki, Kd, tS = 0.1):
         self.Kp = Kp
         self.Ki = Ki
         self.Kd = Kd
 
+        self.tS = tS #timestep
         self.output = 0
         self.target = 0
         self.prev_error = 0
@@ -30,7 +31,7 @@ class PID(object):
     
     def compute(self, current):
         error = self.target - current
-        derivative = error - self.prev_error
+        derivative = (error - self.prev_error)/self.tS
 
         self.integral += error
 
