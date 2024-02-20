@@ -15,6 +15,7 @@ class model(object):
 
     def sim_accel(self, velocity, accel):
         return (accel) - (1.0/(2.0 * self.mass)) * self.rho * self.area * self.drag * (velocity ** 2)
+        #return accel
     
     def getVelocity(self, accel, v0, time_step):
         return accel * time_step + v0
@@ -47,19 +48,20 @@ class model(object):
             targetList.append(pid.getTarget())
             v.append(self.getVelocity(v[-1], a[-1], time_step_size))
 
-            if time_list[i] % pid.tS:
-                outputList.append(pid.compute(a[-1]))
+            if time_list[i] % pid.sample_rate:
+                signal = pid.compute(a[-1])
+                outputList.append(signal)
 
             a.append(self.sim_accel(v[-1], outputList[-1]))
 
         return time_list, outputList, a, targetList
     
 if( __name__) == ("__main__"):
-    pid = PID(0.8, 0, 0, 0.1) 
+    pid = PID(0.6, 0.1, 0.1, 0.1) 
     car = model(300, 0.24, 1.225, 5)
-    commandList = [[0, 5], [10,4], [20,3], [30, 10]]
+    commandList = [[0, 5], [1,4], [2,3], [3, 10]]
 
-    timeList, outputList, a, targetList = car.simulate(50, commandList, pid)
+    timeList, outputList, a, targetList = car.simulate(5, commandList, pid)
     #print(timeList)
     #print(outputList)
     #print(a)
