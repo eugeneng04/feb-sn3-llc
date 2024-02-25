@@ -74,7 +74,7 @@ class model(object):
 if( __name__) == ("__main__"):
     pid = PID(1, 0.1, 0.1, 12, 0.1) 
     car = model(300, 0.24, 1.225, 5)
-    commandList = [[0, 5], [1,4], [2,-3], [3, 10]]
+    commandList = [[0, 5], [1,5.2], [2,5.1], [3, 5.6]]
 
     timeList, outputList, a, targetList, v = car.simulate(5, commandList, pid)
     #print(timeList)
