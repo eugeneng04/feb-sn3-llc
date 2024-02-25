@@ -1,7 +1,7 @@
 #import rospy
 
 class PID(object):
-    def __init__(self, Kp, Ki, Kd, sample_rate = 0.1):
+    def __init__(self, Kp, Ki, Kd, max_output, sample_rate = 0.1):
         self.Kp = Kp
         self.Ki = Ki
         self.Kd = Kd
@@ -13,7 +13,7 @@ class PID(object):
         self.time = 0
         self.prev_time = 0
         self.integral = 0
-        self.max_output = 1
+        self.max_output = max_output
     
     def getGains(self):
         return (self.Kp, self.Ki, self.Kd)
@@ -25,7 +25,7 @@ class PID(object):
     
     def setTarget(self, target):
         self.integral = 0
-        print(f"setting target from {self.target} to {target}")
+        #print(f"setting target from {self.target} to {target}")
         self.target = target
 
     def getTarget(self):
@@ -33,19 +33,19 @@ class PID(object):
     
     def compute(self, current):
         error = self.target - current
-        derivative = (error - self.prev_error)/self.sample_rate
+        derivative = (current - self.prev_error)/self.sample_rate
 
         self.integral += error
 
-        output = (error * self.Kp) + (self.integral * self.Ki) + (derivative * self.Kd)
+        self.output = (error * self.Kp) + (self.integral * self.Ki) + (derivative * self.Kd)
 
         if self.output > self.max_output:
             self.output = self.max_output
         elif self.output < -self.max_output:
             self.output = -self.max_output
-        print(output)
-        self.prev_error = error
+        print(self.output)
+        self.prev_reading = current
 
-        return output
+        return self.output
     
     

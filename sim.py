@@ -13,16 +13,30 @@ class model(object):
         self.rho = rho
         self.area = area
 
-    def sim_accel(self, velocity, accel):
+    def sim_accel(self, velocity, accel): #deprecated
         return (accel) - (1.0/(2.0 * self.mass)) * self.rho * self.area * self.drag * (velocity ** 2)
         #return accel
-    
+
     def getVelocity(self, accel, v0, time_step):
         return accel * time_step + v0
+
+    def torqueToAccel(self, velocity, torque):
+        rolling_resistance = 6.0430
+        drive_ratio = 3.5
+        tire_radius = 0.202
+        acc_new = 9.61
+        return min((torque * drive_ratio - rolling_resistance - (1.0/(2.0 * self.mass)) * self.rho * self.area * self.drag * (velocity ** 2))/tire_radius/self.mass, acc_new)
+
+    def accelToTorque(self, velocity, accel):
+        rolling_resistance = 6.0430
+        drive_ratio = 3.5
+        tire_radius = 0.202
+        max_torque = 230
+        return min(((accel * tire_radius * self.mass) + rolling_resistance + (1.0/(2.0 * self.mass)) * self.rho * self.area * self.drag * (velocity ** 2))/drive_ratio, max_torque)
     
     def simulate(self, duration, commands, pid):
-        #duration: time to run simulation
-        #set of commands to pass through simulator: [time, target]
+    #duration: time to run simulation
+    #set of commands to pass through simulator: [time, target]
 
         currCommand = 0 #index for current command
         v = [0] #list to track previous velocities for model
@@ -46,34 +60,40 @@ class model(object):
                     currCommand += 1
 
             targetList.append(pid.getTarget())
-            v.append(self.getVelocity(v[-1], a[-1], time_step_size))
+            v.append(self.getVelocity(a[-1], v[-1], time_step_size))
 
             if time_list[i] % pid.sample_rate:
-                signal = pid.compute(a[-1])
-                outputList.append(signal)
+                signal = pid.compute(a[-1]) #returns acceleration
+                outputList.append(self.accelToTorque(v[-1], signal))
 
-            a.append(self.sim_accel(v[-1], outputList[-1]))
+            #a.append(self.sim_accel(v[-1], outputList[-1]))
+            a.append(signal)
 
-        return time_list, outputList, a, targetList
+        return time_list, outputList, a, targetList, v
     
 if( __name__) == ("__main__"):
-    pid = PID(0.6, 0.1, 0.1, 0.1) 
+    pid = PID(1, 0.1, 0.1, 12, 0.1) 
     car = model(300, 0.24, 1.225, 5)
-    commandList = [[0, 5], [1,4], [2,3], [3, 10]]
+    commandList = [[0, 5], [1,4], [2,-3], [3, 10]]
 
-    timeList, outputList, a, targetList = car.simulate(5, commandList, pid)
+    timeList, outputList, a, targetList, v = car.simulate(5, commandList, pid)
     #print(timeList)
     #print(outputList)
     #print(a)
     #print(targetList)
-    fig, (ax1) = plt.subplots(1, sharex = True, constrained_layout = True)
+    fig, (ax1,ax2, ax3) = plt.subplots(3, sharex = True, constrained_layout = True)
 
     ax1.plot(timeList, targetList, label = "target")
     ax1.plot(timeList, a, label = "accel")
-
     ax1.legend()
     ax1.set_ylabel("acceleration")
     ax1.set_title("target and acceleration")
 
-    plt.show(block = True)
+    ax2.plot(timeList, v, label = "velocity")
+    ax2.set_ylabel("velocity")
+    ax2.set_title("velocity over time")
 
+    ax3.plot(timeList, outputList)
+    ax3.set_ylabel("torque")
+    ax3.set_title("torque over time")
+    plt.show(block = True)
