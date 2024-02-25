@@ -1,0 +1,18 @@
+[0.785s] Invoking command in '/home/eugene/feb-sn3-llc/comm_ws/build/odometry': PYTHONPATH=/home/eugene/feb-sn3-llc/comm_ws/build/odometry/prefix_override:/home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build --no-deps install_data
+[0.954s] running develop
+[1.032s] running egg_info
+[1.033s] writing odometry.egg-info/PKG-INFO
+[1.033s] writing dependency_links to odometry.egg-info/dependency_links.txt
+[1.033s] writing entry points to odometry.egg-info/entry_points.txt
+[1.034s] writing requirements to odometry.egg-info/requires.txt
+[1.034s] writing top-level names to odometry.egg-info/top_level.txt
+[1.035s] reading manifest file 'odometry.egg-info/SOURCES.txt'
+[1.036s] writing manifest file 'odometry.egg-info/SOURCES.txt'
+[1.037s] running build_ext
+[1.037s] Creating /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry.egg-link (link to .)
+[1.038s] Installing odometry_node script to /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/odometry
+[1.039s] Installing throttle_control script to /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/odometry
+[1.039s] 
+[1.039s] Installed /home/eugene/feb-sn3-llc/comm_ws/build/odometry
+[1.040s] running install_data
+[1.059s] Invoked command in '/home/eugene/feb-sn3-llc/comm_ws/build/odometry' returned '0': PYTHONPATH=/home/eugene/feb-sn3-llc/comm_ws/build/odometry/prefix_override:/home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build --no-deps install_data
