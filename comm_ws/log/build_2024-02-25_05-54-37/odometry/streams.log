@@ -1,0 +1,24 @@
+[0.687s] Invoking command in '/home/eugene/feb-sn3-llc/comm_ws/src/odometry': PYTHONPATH=/home/eugene/feb-sn3-llc/comm_ws/build/odometry/prefix_override:/home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/odometry build --build-base /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build install --record /home/eugene/feb-sn3-llc/comm_ws/build/odometry/install.log --single-version-externally-managed
+[0.857s] running egg_info
+[0.858s] writing ../../build/odometry/odometry.egg-info/PKG-INFO
+[0.858s] writing dependency_links to ../../build/odometry/odometry.egg-info/dependency_links.txt
+[0.859s] writing entry points to ../../build/odometry/odometry.egg-info/entry_points.txt
+[0.859s] writing requirements to ../../build/odometry/odometry.egg-info/requires.txt
+[0.859s] writing top-level names to ../../build/odometry/odometry.egg-info/top_level.txt
+[0.860s] reading manifest file '../../build/odometry/odometry.egg-info/SOURCES.txt'
+[0.860s] writing manifest file '../../build/odometry/odometry.egg-info/SOURCES.txt'
+[0.861s] running build
+[0.861s] running build_py
+[0.861s] copying odometry/publisher.py -> /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build/lib/odometry
+[0.861s] running install
+[0.861s] running install_lib
+[0.862s] copying /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build/lib/odometry/publisher.py -> /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry
+[0.862s] byte-compiling /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry/publisher.py to publisher.cpython-310.pyc
+[0.862s] running install_data
+[0.863s] running install_egg_info
+[0.864s] removing '/home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry-0.0.0-py3.10.egg-info' (and everything under it)
+[0.865s] Copying ../../build/odometry/odometry.egg-info to /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry-0.0.0-py3.10.egg-info
+[0.866s] running install_scripts
+[0.878s] Installing odometry_node script to /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/odometry
+[0.878s] writing list of installed files to '/home/eugene/feb-sn3-llc/comm_ws/build/odometry/install.log'
+[0.892s] Invoked command in '/home/eugene/feb-sn3-llc/comm_ws/src/odometry' returned '0': PYTHONPATH=/home/eugene/feb-sn3-llc/comm_ws/build/odometry/prefix_override:/home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/odometry build --build-base /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build install --record /home/eugene/feb-sn3-llc/comm_ws/build/odometry/install.log --single-version-externally-managed

@@ -1,0 +1,4 @@
+[console_scripts]
+odometry_node = odometry.publisher:main
+throttle_control = odometry.throttle_control:main
+

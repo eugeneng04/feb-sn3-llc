@@ -1,0 +1,30 @@
+running develop
+Removing /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry.egg-link (link to .)
+running egg_info
+writing ../../build/odometry/odometry.egg-info/PKG-INFO
+writing dependency_links to ../../build/odometry/odometry.egg-info/dependency_links.txt
+writing entry points to ../../build/odometry/odometry.egg-info/entry_points.txt
+writing requirements to ../../build/odometry/odometry.egg-info/requires.txt
+writing top-level names to ../../build/odometry/odometry.egg-info/top_level.txt
+reading manifest file '../../build/odometry/odometry.egg-info/SOURCES.txt'
+writing manifest file '../../build/odometry/odometry.egg-info/SOURCES.txt'
+running build
+running build_py
+copying odometry/throttle_control.py -> /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build/lib/odometry
+copying odometry/publisher.py -> /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build/lib/odometry
+running install
+running install_lib
+creating /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry
+copying /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build/lib/odometry/throttle_control.py -> /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry
+copying /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build/lib/odometry/publisher.py -> /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry
+copying /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build/lib/odometry/__init__.py -> /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry
+byte-compiling /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry/throttle_control.py to throttle_control.cpython-310.pyc
+byte-compiling /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry/publisher.py to publisher.cpython-310.pyc
+byte-compiling /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry/__init__.py to __init__.cpython-310.pyc
+running install_data
+running install_egg_info
+Copying ../../build/odometry/odometry.egg-info to /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry-0.0.0-py3.10.egg-info
+running install_scripts
+Installing odometry_node script to /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/odometry
+Installing throttle_control script to /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/odometry
+writing list of installed files to '/home/eugene/feb-sn3-llc/comm_ws/build/odometry/install.log'

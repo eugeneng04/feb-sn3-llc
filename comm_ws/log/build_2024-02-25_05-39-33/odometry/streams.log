@@ -1,0 +1,33 @@
+[0.697s] Invoking command in '/home/eugene/feb-sn3-llc/comm_ws/src/odometry': PYTHONPATH=/home/eugene/feb-sn3-llc/comm_ws/build/odometry/prefix_override:/home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/odometry build --build-base /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build install --record /home/eugene/feb-sn3-llc/comm_ws/build/odometry/install.log --single-version-externally-managed
+[0.852s] running egg_info
+[0.853s] creating ../../build/odometry/odometry.egg-info
+[0.853s] writing ../../build/odometry/odometry.egg-info/PKG-INFO
+[0.854s] writing dependency_links to ../../build/odometry/odometry.egg-info/dependency_links.txt
+[0.854s] writing entry points to ../../build/odometry/odometry.egg-info/entry_points.txt
+[0.854s] writing requirements to ../../build/odometry/odometry.egg-info/requires.txt
+[0.854s] writing top-level names to ../../build/odometry/odometry.egg-info/top_level.txt
+[0.854s] writing manifest file '../../build/odometry/odometry.egg-info/SOURCES.txt'
+[0.855s] reading manifest file '../../build/odometry/odometry.egg-info/SOURCES.txt'
+[0.856s] writing manifest file '../../build/odometry/odometry.egg-info/SOURCES.txt'
+[0.856s] running build
+[0.856s] running build_py
+[0.856s] creating /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build
+[0.856s] creating /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build/lib
+[0.856s] creating /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build/lib/odometry
+[0.856s] copying odometry/__init__.py -> /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build/lib/odometry
+[0.856s] running install
+[0.856s] running install_lib
+[0.857s] creating /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry
+[0.857s] copying /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build/lib/odometry/__init__.py -> /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry
+[0.858s] byte-compiling /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry/__init__.py to __init__.cpython-310.pyc
+[0.858s] running install_data
+[0.858s] creating /home/eugene/feb-sn3-llc/comm_ws/install/odometry/share/ament_index
+[0.858s] creating /home/eugene/feb-sn3-llc/comm_ws/install/odometry/share/ament_index/resource_index
+[0.858s] creating /home/eugene/feb-sn3-llc/comm_ws/install/odometry/share/ament_index/resource_index/packages
+[0.858s] copying resource/odometry -> /home/eugene/feb-sn3-llc/comm_ws/install/odometry/share/ament_index/resource_index/packages
+[0.859s] copying package.xml -> /home/eugene/feb-sn3-llc/comm_ws/install/odometry/share/odometry
+[0.859s] running install_egg_info
+[0.860s] Copying ../../build/odometry/odometry.egg-info to /home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages/odometry-0.0.0-py3.10.egg-info
+[0.861s] running install_scripts
+[0.873s] writing list of installed files to '/home/eugene/feb-sn3-llc/comm_ws/build/odometry/install.log'
+[0.887s] Invoked command in '/home/eugene/feb-sn3-llc/comm_ws/src/odometry' returned '0': PYTHONPATH=/home/eugene/feb-sn3-llc/comm_ws/build/odometry/prefix_override:/home/eugene/feb-sn3-llc/comm_ws/install/odometry/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/odometry build --build-base /home/eugene/feb-sn3-llc/comm_ws/build/odometry/build install --record /home/eugene/feb-sn3-llc/comm_ws/build/odometry/install.log --single-version-externally-managed
