@@ -34,6 +34,19 @@ class model(object):
         max_torque = 230
         return min(((accel * tire_radius * self.mass) + rolling_resistance + (1.0/(2.0 * self.mass)) * self.rho * self.area * self.drag * (velocity ** 2))/drive_ratio, max_torque)
     
+    def decelToTorque(self, a):
+        return 0.254*a*(1764-(300*0.35*a)/1.55)
+
+    def decelToBrakingForce(self, accel):
+        a_fmc = 0.000197932609 #bore area of front master cylinder
+        r_fr = 0.254 #radius of front rotor
+        ucp = 0.5 #coefficient of friction of brake pad on rotor
+        n = 4 # number of pistons
+        a_fcp = 0.0009079202769 #bore area of pistons at the front
+
+        return (self.decelToTorque(accel) * a_fmc) / (r_fr * ucp * n * a_fcp)
+        
+
     def simulate(self, duration, commands, pid):
     #duration: time to run simulation
     #set of commands to pass through simulator: [time, target]
@@ -48,6 +61,9 @@ class model(object):
 
         targetList = [pid.getTarget()] #intialize list of targets
         outputList = [pid.compute(a[0])] #initialize output list for accerlation 
+
+        torqueList = [0]
+        brakingList = [0]
 
         time_step_size = 0.01
 
@@ -64,24 +80,30 @@ class model(object):
 
             if time_list[i] % pid.sample_rate:
                 signal = pid.compute(a[-1]) #returns acceleration
+                if (signal > 0):
+                    torqueList.append(signal)
+                    brakingList.append(0)
+                else:
+                    brakingList.append(signal)
+                    torqueList.append(0)
                 outputList.append(self.accelToTorque(v[-1], signal))
-
+                
             #a.append(self.sim_accel(v[-1], outputList[-1]))
             a.append(signal)
 
-        return time_list, outputList, a, targetList, v
+        return time_list, outputList, a, targetList, v, torqueList, brakingList
     
 if( __name__) == ("__main__"):
     pid = PID(1, 0.1, 0.1, 12, 0.1) 
     car = model(300, 0.24, 1.225, 5)
-    commandList = [[0, 5], [1,5.2], [2,5.1], [3, 5.6]]
+    commandList = [[0, 2], [1,-1], [2,3], [3, -2]]
 
-    timeList, outputList, a, targetList, v = car.simulate(5, commandList, pid)
+    timeList, outputList, a, targetList, v, torqueList, brakeList = car.simulate(5, commandList, pid)
     #print(timeList)
     #print(outputList)
     #print(a)
     #print(targetList)
-    fig, (ax1,ax2, ax3) = plt.subplots(3, sharex = True, constrained_layout = True)
+    fig, (ax1,ax2, ax3, ax4) = plt.subplots(4, sharex = True, constrained_layout = True)
 
     ax1.plot(timeList, targetList, label = "target")
     ax1.plot(timeList, a, label = "accel")
@@ -93,7 +115,12 @@ if( __name__) == ("__main__"):
     ax2.set_ylabel("velocity")
     ax2.set_title("velocity over time")
 
-    ax3.plot(timeList, outputList)
+    ax3.plot(timeList, torqueList)
     ax3.set_ylabel("torque")
     ax3.set_title("torque over time")
+
+    ax4.plot(timeList, brakeList)
+    ax4.set_ylabel("braking")
+    ax4.set_title("piston braking force over time")
+    print(min(outputList))
     plt.show(block = True)
